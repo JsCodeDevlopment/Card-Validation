@@ -8,9 +8,13 @@ export const ResetCSS = createGlobalStyle`
     box-sizing: border-box;
     font-family: Space Grotesk;
     text-decoration: none;
-    background-color: ${({ theme })=>theme.colors.White};
   }
   html {
     font-size: 62.5%;
+  }
+
+  html, #root{
+    width: 100%;
+    height: 100%;
   }
 `;

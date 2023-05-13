@@ -2,18 +2,23 @@ import { ThemeProvider } from "styled-components";
 import { Imagens } from "./Styles/Images";
 import { Theme } from "./Styles/Theme";
 import { Button } from "./Components/Button";
-import { MainPage } from "./Styles/StructureStyles";
+import { MainPage, CardsDiv, FormDiv } from "./Styles/StructureStyles";
 import { ResetCSS } from "./Styles/GlobalStyle";
-
+import { FirstCard, BackCard } from "./Components/Cards";
 
 export function App() {
   return (
     <ThemeProvider theme={Theme}>
-      <ResetCSS/>
+      <ResetCSS />
       <MainPage Bg={Imagens.BgOfDesktop}>
-        <h1>Hello World</h1>
-        <img src={Imagens.FrontCard} alt="" />
-        <Button>Confirm</Button>
+        <CardsDiv>
+          <FirstCard BgCard={Imagens.FrontCard}></FirstCard>
+          <BackCard BgCard={Imagens.BackCard}></BackCard>
+        </CardsDiv>
+        <FormDiv>
+          FORMULÁRIO
+          <Button>Confirm</Button>
+        </FormDiv>
       </MainPage>
     </ThemeProvider>
   );
