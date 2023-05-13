@@ -6,9 +6,11 @@ export const ResetCSS = createGlobalStyle`
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    font-size: 62.5%;
     font-family: Space Grotesk;
     text-decoration: none;
     background-color: ${({ theme })=>theme.colors.White};
+  }
+  html {
+    font-size: 62.5%;
   }
 `;
