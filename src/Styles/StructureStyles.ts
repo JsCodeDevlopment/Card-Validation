@@ -7,7 +7,7 @@ export const MainPage = styled.main<MainPageProps>`
     display: flex;
     width: 100%;
     height: 100vh;
-    padding: 14rem 10rem;
+    padding: 5rem 10rem;
     gap: 12rem;
     flex-wrap: wrap;
     background-image: url(${Bg});
