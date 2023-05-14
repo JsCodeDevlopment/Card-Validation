@@ -8,15 +8,25 @@ import { FirstCard, BackCard, NameAndDateDiv } from "./Components/Cards";
 import { FlagCardImg } from "./Components/CardFlag";
 import { CardNumber, Subtitle } from "./Components/FrontCardTextStyles";
 
+import React, { useState } from "react";
+
 export function App() {
+  const [inputValue, setInputValue] = useState("0000 0000 0000 0000");
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    if (value.length <= 16) {
+      setInputValue(value);
+    }
+  };
+
   return (
     <ThemeProvider theme={Theme}>
       <ResetCSS />
       <MainPage Bg={Imagens.BgOfDesktop}>
         <CardsDiv>
           <FirstCard BgCard={Imagens.FrontCard}>
-            <FlagCardImg src={Imagens.CardFlag} alt="Flag"/>
-            <CardNumber>0000 0000 0000 0000</CardNumber>
+            <FlagCardImg src={Imagens.CardFlag} alt="Flag" />
+            <CardNumber>{inputValue}</CardNumber>
             <NameAndDateDiv>
               <Subtitle>Jhon Doe</Subtitle>
               <Subtitle>32/75</Subtitle>
@@ -25,9 +35,17 @@ export function App() {
           <BackCard BgCard={Imagens.BackCard}></BackCard>
         </CardsDiv>
         <FormDiv>
-          FORMULÁRIO<br/>
-          <input type="text"  placeholder="name"/><br/>
-          <input type="number" placeholder="card number"/><br/>
+          FORMULÁRIO
+          <br />
+          <input type="text" placeholder="name" />
+          <br />
+          <input
+            type="number"
+            value={inputValue}
+            placeholder="card number"
+            onChange={handleInputChange}
+          />
+          <br />
           <Button>Confirm</Button>
         </FormDiv>
       </MainPage>
