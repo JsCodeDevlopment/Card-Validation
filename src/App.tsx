@@ -46,7 +46,7 @@ export function App() {
         </CardsDiv>
         <FormDiv>
           <FormText>CARDHOLDER NAME</FormText>
-          <GenericInput type="text" placeholder="e.g. Jhon Doe" />
+          <GenericInput type="text" value={""} placeholder="e.g. Jhon Doe" />
           <FormText>CARD NUMBER</FormText>
           <GenericInput
             type="number"
@@ -56,10 +56,10 @@ export function App() {
           />
           <FormDateDiv>
             <FormText>EXP. DATE (MM/YY)</FormText>
-            <LittleInput type="number" placeholder="MM" />
-            <LittleInput type="number" placeholder="YY" />
+            <LittleInput type="number" value={""} placeholder="MM" />
+            <LittleInput type="number" value={""} placeholder="YY" />
             <FormText>CVC</FormText>
-            <LittleInput type="number" placeholder="e.g. 123" />
+            <LittleInput type="number" value={""} placeholder="e.g. 123" />
           </FormDateDiv>
           <Button>Confirm</Button>
         </FormDiv>

@@ -18,6 +18,13 @@ export const FirstCard = styled.div<CardProps>`
     background-size: cover;
     border-radius: 1rem;
     align-self: flex-end;
+    @media (max-width: 1310px) {
+      width: 38.3rem;
+      height: 18.2rem;
+      gap: 0.3rem;
+      align-self: flex-start;
+      margin-top: -5rem;
+    }
   `}
 `;
 export const NameAndDateDiv = styled.div`
@@ -37,5 +44,10 @@ export const BackCard = styled.div<CardProps>`
     background-size: cover;
     border-radius: 1rem;
     align-self: flex-start;
+    @media (max-width: 1310px) {
+      width: 38.3rem;
+      height: 18.2rem;
+      align-self: flex-end;
+    }
   `}
 `;
