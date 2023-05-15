@@ -30,8 +30,15 @@ export const FormDiv = styled.div`
 ${()=>css`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 2.5rem;
     justify-content: center;
     width: 39rem;
+`}
+`
+export const FormDateDiv = styled.div`
+${()=>css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `}
 `

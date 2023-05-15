@@ -1,14 +1,24 @@
+import React, { useState } from "react";
+
 import { ThemeProvider } from "styled-components";
 import { Imagens } from "./Styles/Images";
 import { Theme } from "./Styles/Theme";
 import { Button } from "./Components/Button";
-import { MainPage, CardsDiv, FormDiv } from "./Styles/StructureStyles";
+import {
+  MainPage,
+  CardsDiv,
+  FormDiv,
+  FormDateDiv,
+} from "./Styles/StructureStyles";
 import { ResetCSS } from "./Styles/GlobalStyle";
 import { FirstCard, BackCard, NameAndDateDiv } from "./Components/Cards";
 import { FlagCardImg } from "./Components/CardFlag";
-import { CardNumber, Subtitle } from "./Components/FrontCardTextStyles";
-
-import React, { useState } from "react";
+import {
+  CardNumber,
+  FormText,
+  Subtitle,
+} from "./Components/FrontCardTextStyles";
+import { GenericInput, LittleInput } from "./Components/Form";
 
 export function App() {
   const [inputValue, setInputValue] = useState("0000 0000 0000 0000");
@@ -35,17 +45,22 @@ export function App() {
           <BackCard BgCard={Imagens.BackCard}></BackCard>
         </CardsDiv>
         <FormDiv>
-          FORMULÁRIO
-          <br />
-          <input type="text" placeholder="name" />
-          <br />
-          <input
+          <FormText>CARDHOLDER NAME</FormText>
+          <GenericInput type="text" placeholder="e.g. Jhon Doe" />
+          <FormText>CARD NUMBER</FormText>
+          <GenericInput
             type="number"
             value={inputValue}
-            placeholder="card number"
+            placeholder="e.g. 1234 5678 9123 0000"
             onChange={handleInputChange}
           />
-          <br />
+          <FormDateDiv>
+            <FormText>EXP. DATE (MM/YY)</FormText>
+            <LittleInput type="number" placeholder="MM" />
+            <LittleInput type="number" placeholder="YY" />
+            <FormText>CVC</FormText>
+            <LittleInput type="number" placeholder="e.g. 123" />
+          </FormDateDiv>
           <Button>Confirm</Button>
         </FormDiv>
       </MainPage>

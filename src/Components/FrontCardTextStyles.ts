@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { Theme } from "../Styles/Theme";
 
 export const CardNumber = styled.h1`
   ${() => css`
@@ -12,3 +13,12 @@ export const Subtitle = styled.h3`
     font-weight: 300;
   `}
 `;
+
+export const FormText = styled.p`
+${()=>css`
+font-size: 1rem;
+letter-spacing: 0.2rem;
+font-weight: 300;
+color: ${Theme.colors.VeryDarkViolet};
+`}
+`
