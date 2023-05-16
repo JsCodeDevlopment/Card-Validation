@@ -14,7 +14,7 @@ export const Subtitle = styled.h3`
   `}
 `;
 
-export const FormText = styled.p`
+export const FormText = styled.label`
 ${()=>css`
 font-size: 1rem;
 letter-spacing: 0.2rem;

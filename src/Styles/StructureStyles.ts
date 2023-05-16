@@ -48,10 +48,3 @@ export const FormDiv = styled.div`
     }
   `}
 `;
-export const FormDateDiv = styled.div`
-  ${() => css`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  `}
-`;
