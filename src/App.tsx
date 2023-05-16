@@ -73,6 +73,7 @@ export const App: React.FC = () => {
               CARDHOLDER NAME
               <GenericInput
                 type="text"
+                name="name"
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder="e.g. Jhon Doe"
@@ -83,6 +84,7 @@ export const App: React.FC = () => {
               CARD NUMBER
               <GenericInput
                 type="number"
+                name="cardNumber"
                 value={formData.cardNumber}
                 placeholder="e.g. 1234 5678 9123 0000"
                 onChange={handleInputChange}
@@ -94,6 +96,7 @@ export const App: React.FC = () => {
               EXP. DATE (MM/YY)
               <LittleInput
                 type="number"
+                name="mm"
                 onChange={handleInputChange}
                 value={formData.mm}
                 maxLength={2}
@@ -102,6 +105,7 @@ export const App: React.FC = () => {
               />
               <LittleInput
                 type="number"
+                name="yy"
                 onChange={handleInputChange}
                 value={formData.yy}
                 placeholder="YY"
@@ -113,6 +117,7 @@ export const App: React.FC = () => {
               CVC
               <LittleInput
                 type="number"
+                name="cvc"
                 onChange={handleInputChange}
                 value={formData.cvc}
                 placeholder="e.g. 123"
