@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
 type CardProps = {
-  BgCard: string;
+  bgcard: string;
 };
 
 export const FirstCard = styled.div<CardProps>`
-  ${({ BgCard, theme }) => css`
+  ${({ bgcard: BgCard, theme }) => css`
     display: flex;
     width: 44.8rem;
     height: 25rem;
@@ -35,7 +35,7 @@ export const NameAndDateDiv = styled.div`
 `;
 
 export const BackCard = styled.div<CardProps>`
-  ${({ BgCard }) => css`
+  ${({ bgcard: BgCard }) => css`
     display: flex;
     width: 44.8rem;
     height: 25rem;

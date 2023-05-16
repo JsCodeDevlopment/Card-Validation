@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import { Imagens } from "./Images";
 type MainPageProps = {
-  Bg: string;
+  bg: string;
 };
 export const MainPage = styled.main<MainPageProps>`
-  ${({ Bg }) => css`
+  ${({ bg: Bg }) => css`
     display: flex;
     width: 100%;
     padding: 5rem 10rem;

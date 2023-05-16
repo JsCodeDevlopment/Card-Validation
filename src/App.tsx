@@ -15,49 +15,27 @@ import {
 } from "./Components/FrontCardTextStyles";
 import { GenericInput, LittleInput } from "./Components/Form";
 
+
 export const App: React.FC = () => {
   const [formData, setFormData] = useState({
-    cardNumer: "",
+    cardNumber: "",
     name: "",
     mm: "",
     yy: "",
     cvc: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    let newValue = value;
-
-    if (name === "cardNumber") {
-      newValue = newValue.replace(/\s/g, "");
-      if (newValue.length > 16) {
-        return;
-      }
-      newValue = newValue.replace(/(\d{4})/g, "$1 ");
-    }
-
-    if (name === "expMonth" || name === "expYear") {
-      newValue = newValue.replace(/\D/g, "");
-      if (newValue.length > 2) {
-        return;
-      }
-    }
-
-    if (name === "cvc") {
-      newValue = newValue.replace(/\D/g, "");
-      if (newValue.length > 3) {
-        return;
-      }
-    }
-
-    setFormData({ ...formData, [name]: newValue });
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { cardNumer, name, mm, yy, cvc } = formData;
+    const { cardNumber, name, mm, yy, cvc } = formData;
     if (
-      cardNumer.trim() === "" ||
+      cardNumber.trim() === "" ||
       name.trim() === "" ||
       mm.trim() === "" ||
       yy.trim() === "" ||
@@ -75,11 +53,11 @@ export const App: React.FC = () => {
   return (
     <ThemeProvider theme={Theme}>
       <ResetCSS />
-      <MainPage Bg={Imagens.BgOfDesktop}>
+      <MainPage bg={Imagens.BgOfDesktop}>
         <CardsDiv>
-          <FirstCard BgCard={Imagens.FrontCard}>
+          <FirstCard bgcard={Imagens.FrontCard}>
             <FlagCardImg src={Imagens.CardFlag} alt="Flag" />
-            <CardNumber>{formData.cardNumer}</CardNumber>
+            <CardNumber>{formData.cardNumber}</CardNumber>
             <NameAndDateDiv>
               <Subtitle>{formData.name}</Subtitle>
               <Subtitle>
@@ -87,7 +65,7 @@ export const App: React.FC = () => {
               </Subtitle>
             </NameAndDateDiv>
           </FirstCard>
-          <BackCard BgCard={Imagens.BackCard}></BackCard>
+          <BackCard bgcard={Imagens.BackCard}></BackCard>
         </CardsDiv>
         <FormDiv>
           <form onSubmit={handleSubmit}>
@@ -105,7 +83,7 @@ export const App: React.FC = () => {
               CARD NUMBER
               <GenericInput
                 type="number"
-                value={formData.cardNumer}
+                value={formData.cardNumber}
                 placeholder="e.g. 1234 5678 9123 0000"
                 onChange={handleInputChange}
                 maxLength={19}
@@ -149,4 +127,4 @@ export const App: React.FC = () => {
       </MainPage>
     </ThemeProvider>
   );
-}
+};
