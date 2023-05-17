@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { Imagens } from "./Styles/Images";
 import { Theme } from "./Styles/Theme";
 import { Button } from "./Components/Button";
-import { MainPage, CardsDiv, FormDiv } from "./Styles/StructureStyles";
+import { MainPage, CardsDiv, FormDiv, FormElement } from "./Styles/StructureStyles";
 import { ResetCSS } from "./Styles/GlobalStyle";
 import { FirstCard, BackCard, NameAndDateDiv } from "./Components/Cards";
 import { FlagCardImg } from "./Components/CardFlag";
@@ -28,6 +28,36 @@ export const App: React.FC = () => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+    let newValue = value;
+    
+    if (name === "cardNumber") {
+      newValue = newValue.replace(/\s/g, "");
+      if (newValue.length > 16) {
+        return;
+      }
+      newValue = newValue.replace(/(\d{4})/g, "$1 ");
+    }
+    
+    if (name === "mm" || name === "yy") {
+      newValue = newValue.replace(/\D/g, "");
+      if (newValue.length > 2) {
+        return;
+      }
+    }
+
+    if (name === "name") {
+      newValue = newValue.replace(/[^a-zA-Z ]/g, "");
+    } else {
+      newValue = ""
+    }
+
+    if (name === "cvc") {
+      newValue = newValue.replace(/\D/g, "");
+      if (newValue.length > 3) {
+        return;
+      }
+    }
+
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
@@ -59,7 +89,7 @@ export const App: React.FC = () => {
             <FlagCardImg src={Imagens.CardFlag} alt="Flag" />
             <CardNumber>{formData.cardNumber}</CardNumber>
             <NameAndDateDiv>
-              <Subtitle>{formData.name}</Subtitle>
+              <Subtitle>{formData.name.toUpperCase()}</Subtitle>
               <Subtitle>
                 {formData.mm}/{formData.yy}
               </Subtitle>
@@ -68,7 +98,7 @@ export const App: React.FC = () => {
           <BackCard bgcard={Imagens.BackCard}></BackCard>
         </CardsDiv>
         <FormDiv>
-          <form onSubmit={handleSubmit}>
+          <FormElement onSubmit={handleSubmit}>
             <FormText>
               CARDHOLDER NAME
               <GenericInput
@@ -126,7 +156,7 @@ export const App: React.FC = () => {
               />
             </FormText>
             <Button type="submit">Confirm</Button>
-          </form>
+          </FormElement>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </FormDiv>
       </MainPage>

@@ -48,3 +48,15 @@ export const FormDiv = styled.div`
     }
   `}
 `;
+export const FormElement = styled.form`
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    width: 39rem;
+    @media (max-width: 1310px) {
+      padding-bottom: 3rem;
+    }
+  `}
+`;
