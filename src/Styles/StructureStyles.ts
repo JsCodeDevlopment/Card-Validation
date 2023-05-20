@@ -7,6 +7,7 @@ export const MainPage = styled.main<MainPageProps>`
   ${({ bg: Bg }) => css`
     display: flex;
     width: 100%;
+    height: 100vh;
     padding: 5rem 10rem;
     gap: 12rem;
     flex-wrap: wrap;

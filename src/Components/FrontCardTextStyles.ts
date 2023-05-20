@@ -5,6 +5,7 @@ export const CardNumber = styled.h1`
   ${() => css`
     font-size: 3rem;
     font-weight: 200;
+    ${Theme.colors.LightGrayishViolet}
   `}
 `;
 export const Subtitle = styled.h3`

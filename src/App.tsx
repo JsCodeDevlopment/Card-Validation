@@ -4,9 +4,19 @@ import { ThemeProvider } from "styled-components";
 import { Imagens } from "./Styles/Images";
 import { Theme } from "./Styles/Theme";
 import { Button } from "./Components/Button";
-import { MainPage, CardsDiv, FormDiv, FormElement } from "./Styles/StructureStyles";
+import {
+  MainPage,
+  CardsDiv,
+  FormDiv,
+  FormElement,
+} from "./Styles/StructureStyles";
 import { ResetCSS } from "./Styles/GlobalStyle";
-import { FirstCard, BackCard, NameAndDateDiv } from "./Components/Cards";
+import {
+  FirstCard,
+  BackCard,
+  NameAndDateDiv,
+  CvcCode,
+} from "./Components/Cards";
 import { FlagCardImg } from "./Components/CardFlag";
 import {
   CardNumber,
@@ -14,7 +24,6 @@ import {
   Subtitle,
 } from "./Components/FrontCardTextStyles";
 import { GenericInput, LittleInput } from "./Components/Form";
-
 
 export const App: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +38,7 @@ export const App: React.FC = () => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     let newValue = value;
-    
+
     if (name === "cardNumber") {
       newValue = newValue.replace(/\s/g, "");
       if (newValue.length > 16) {
@@ -37,7 +46,7 @@ export const App: React.FC = () => {
       }
       newValue = newValue.replace(/(\d{4})/g, "$1 ");
     }
-    
+
     if (name === "mm" || name === "yy") {
       newValue = newValue.replace(/\D/g, "");
       if (newValue.length > 2) {
@@ -48,7 +57,7 @@ export const App: React.FC = () => {
     if (name === "name") {
       newValue = newValue.replace(/[^a-zA-Z ]/g, "");
     } else {
-      newValue = ""
+      newValue = "";
     }
 
     if (name === "cvc") {
@@ -95,7 +104,9 @@ export const App: React.FC = () => {
               </Subtitle>
             </NameAndDateDiv>
           </FirstCard>
-          <BackCard bgcard={Imagens.BackCard}></BackCard>
+          <BackCard bgcard={Imagens.BackCard}>
+            <CvcCode>{formData.cvc}</CvcCode>
+          </BackCard>
         </CardsDiv>
         <FormDiv>
           <FormElement onSubmit={handleSubmit}>
