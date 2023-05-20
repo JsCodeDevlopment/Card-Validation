@@ -61,5 +61,9 @@ export const CvcCode = styled.h3`
     font-size: 1.3rem;
     font-weight: 300;
     color: ${Theme.colors.LightGrayishViolet};
+    @media (max-width: 1296px){
+      top: 10rem;
+      left: 31.5rem;
+    }
   `}
 `;
