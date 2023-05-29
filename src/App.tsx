@@ -24,6 +24,7 @@ import {
   Subtitle,
 } from "./Components/FrontCardTextStyles";
 import { GenericInput, LittleInput } from "./Components/Form";
+import { FinishScreen } from "./Components/FinishScreen";
 
 export const App: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -34,6 +35,7 @@ export const App: React.FC = () => {
     cvc: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [finished, setFinished] = useState(false)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -83,10 +85,10 @@ export const App: React.FC = () => {
       setErrorMessage("Todos os campos são obrigatórios!");
       return;
     }
-
+    
     setErrorMessage("");
     console.log("Dados enviados:", formData);
-    alert("Obrigado!");
+    setFinished(true)
   };
 
   return (
@@ -109,7 +111,10 @@ export const App: React.FC = () => {
           </BackCard>
         </CardsDiv>
         <FormDiv>
-          <FormElement onSubmit={handleSubmit}>
+          {finished ? (
+            <FinishScreen/>
+          ): (<>
+            <FormElement onSubmit={handleSubmit}>
             <FormText>
               CARDHOLDER NAME
               <GenericInput
@@ -169,6 +174,8 @@ export const App: React.FC = () => {
             <Button type="submit">Confirm</Button>
           </FormElement>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+            </>) } 
+          
         </FormDiv>
       </MainPage>
     </ThemeProvider>

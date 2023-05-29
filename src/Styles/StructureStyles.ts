@@ -61,3 +61,12 @@ export const FormElement = styled.form`
     }
   `}
 `;
+
+export const TyDiv = styled.div`
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: center;
+  `}
+`;
