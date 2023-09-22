@@ -35,10 +35,10 @@ export const App: React.FC = () => {
     cvc: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const [finished, setFinished] = useState(false)
+  const [finished, setFinished] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const { name, value } = event.currentTarget;
     let newValue = value;
 
     if (name === "cardNumber") {
@@ -58,16 +58,16 @@ export const App: React.FC = () => {
 
     if (name === "name") {
       newValue = newValue.replace(/[^a-zA-Z ]/g, "");
-    } else {
-      newValue = "";
-    }
+    } 
 
+    console.log(newValue.length);
     if (name === "cvc") {
       newValue = newValue.replace(/\D/g, "");
       if (newValue.length > 3) {
         return;
       }
     }
+    console.log(name);
 
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -85,10 +85,10 @@ export const App: React.FC = () => {
       setErrorMessage("Todos os campos são obrigatórios!");
       return;
     }
-    
+
     setErrorMessage("");
     console.log("Dados enviados:", formData);
-    setFinished(true)
+    setFinished(true);
   };
 
   return (
@@ -112,70 +112,71 @@ export const App: React.FC = () => {
         </CardsDiv>
         <FormDiv>
           {finished ? (
-            <FinishScreen/>
-          ): (<>
-            <FormElement onSubmit={handleSubmit}>
-            <FormText>
-              CARDHOLDER NAME
-              <GenericInput
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="e.g. Jhon Doe"
-                required
-              />
-            </FormText>
-            <FormText>
-              CARD NUMBER
-              <GenericInput
-                type="number"
-                name="cardNumber"
-                value={formData.cardNumber}
-                placeholder="e.g. 1234 5678 9123 0000"
-                onChange={handleInputChange}
-                maxLength={19}
-                required
-              />
-            </FormText>
-            <FormText>
-              EXP. DATE (MM/YY)
-              <LittleInput
-                type="number"
-                name="mm"
-                onChange={handleInputChange}
-                value={formData.mm}
-                maxLength={2}
-                placeholder="MM"
-                required
-              />
-              <LittleInput
-                type="number"
-                name="yy"
-                onChange={handleInputChange}
-                value={formData.yy}
-                placeholder="YY"
-                maxLength={2}
-                required
-              />
-            </FormText>
-            <FormText>
-              CVC
-              <LittleInput
-                type="number"
-                name="cvc"
-                onChange={handleInputChange}
-                value={formData.cvc}
-                placeholder="e.g. 123"
-                maxLength={3}
-                required
-              />
-            </FormText>
-            <Button type="submit">Confirm</Button>
-          </FormElement>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-            </>) } 
-          
+            <FinishScreen />
+          ) : (
+            <>
+              <FormElement onSubmit={handleSubmit}>
+                <FormText>
+                  CARDHOLDER NAME
+                  <GenericInput
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="e.g. Jhon Doe"
+                    required
+                  />
+                </FormText>
+                <FormText>
+                  CARD NUMBER
+                  <GenericInput
+                    type="number"
+                    name="cardNumber"
+                    value={formData.cardNumber}
+                    placeholder="e.g. 1234 5678 9123 0000"
+                    onChange={handleInputChange}
+                    maxLength={19}
+                    required
+                  />
+                </FormText>
+                <FormText>
+                  EXP. DATE (MM/YY)
+                  <LittleInput
+                    type="number"
+                    name="mm"
+                    onChange={handleInputChange}
+                    value={formData.mm}
+                    maxLength={2}
+                    placeholder="MM"
+                    required
+                  />
+                  <LittleInput
+                    type="number"
+                    name="yy"
+                    onChange={handleInputChange}
+                    value={formData.yy}
+                    placeholder="YY"
+                    maxLength={2}
+                    required
+                  />
+                </FormText>
+                <FormText>
+                  CVC
+                  <LittleInput
+                    type="number"
+                    name="cvc"
+                    onChange={handleInputChange}
+                    value={formData.cvc}
+                    placeholder="e.g. 123"
+                    maxLength={3}
+                    required
+                  />
+                </FormText>
+                <Button type="submit">Confirm</Button>
+              </FormElement>
+              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+            </>
+          )}
         </FormDiv>
       </MainPage>
     </ThemeProvider>
